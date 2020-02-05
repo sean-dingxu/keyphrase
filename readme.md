@@ -148,9 +148,11 @@ Show keyPhrases with the biggest frequency, and click to see related papers or t
 ![](docs/keyPhraseList.jpg)
 
 ### PdfList page
-Show the Pdfs which are hot or related to a certain keyPhrase, and click to see the detail of the pdf!  
+Show the Pdfs which are hot or related to a certain keyPhrase (different headline), and click to see the detail of the pdf!  
   
-![](docs/pdfList.jpg)
+![](docs/hotPdfs.jpg)
+![](docs/pdflist2.jpg)
+
 
 ### Detail.page
 Show the details of pdf!  
