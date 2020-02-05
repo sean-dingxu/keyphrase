@@ -71,7 +71,7 @@ def search(request):
         result = getKeyPhraseByTitle(input)
         # check the result
         if not result.get('result'):
-            return HttpResponse(request, 'mission failed, plz retry')
+            return render(request, 'index.html')
         return HttpResponse(template.render(result, request))
 
 

@@ -122,7 +122,8 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 
 
 ### Unit test  
-Unit test store at **/app01/tests/**, Details by reading `tests.py`  
+Unit test store at **/app01/tests/**, Details by reading `tests.py`
+Run unit test on the django
 ```
 python manage.py runserver 
 ```
@@ -164,7 +165,7 @@ Show the details of pdf!
 
 ##### Distribute request of search 
 - Using`search(request)`to distribute request by request.method and search_type
-- NOTE: Title must be in the DB, url must be directly access to the pdf
+- NOTE: Title must be in the DB, url must be directly access to the pdf (such as http://)
 ```python  
 def search(request):
     """
@@ -182,7 +183,6 @@ def search(request):
         input = request.POST.get('url_pdf').strip()
         # if search by url
         if search_type == 'URL':
-            # check the validation
             result = getKeyPhraseByURL(input)
         # if search by title
         elif search_type == 'Title':
@@ -198,9 +198,8 @@ def search(request):
         result = getKeyPhraseByTitle(input)
         # check the result
         if not result.get('result'):
-            return HttpResponse(request, 'mission failed, plz retry')
+            return render(request, 'index.html')
         return HttpResponse(template.render(result, request))
-
 ```  
 
 ##### Search exsiting records in DB (by title OR the pdf can be find)
@@ -215,7 +214,7 @@ def search(request):
         text = text + str(pytesseract.image_to_string(page))
 ```
 - Use `processContent(text)` to get the title, assume the title is on the top
-- Use model TopicRank `pke.unsupervised.TopicRank() ` to generate keyPhrases
+- Use model TopicRank `pke.unsupervised.TopicRank() ` to generate keyPhrases with frequency
 
 ##### KeyPhrases visualization
 - Use `generateWoldCloud(keyPhrases)` to visualize KeyPhrases of the pdf
