@@ -1,14 +1,14 @@
 # KeyPhrase Visualization
 ### Description
 **For WING's task one**   
-###Input :  
+### Input :  
 - URL for PDF
-####Requirements:   
+#### Requirements:   
 - Fetch the PDF using the input URL
 - Identify the content and title of the PDF using OCR processor
 - Get keyPhrases of the content and store it with the title and URL locally
-- Visualize top keyphrases for the entire digested collection
-- Visualize keyphrases for a particular paper
+- Visualize top keyPhrases for the entire digested collection
+- Visualize keyPhrases for a particular paper
 
 ### File Structure  
 keyphrase  
@@ -23,7 +23,7 @@ keyphrase
 │   ├── apps.py  
 │   ├── migrations  <small>*(Migration for DataBase )*</small>  
 │   │   ├── 0001_initial.py  
-│   │   ├── __init__.py  
+│   │   └── __init__.py  
 │   │       ├── 0001_initial.cpython-37.pyc  
 │   │       └── __init__.cpython-37.pyc  
 │   ├── models.py  
@@ -70,33 +70,25 @@ keyphrase
 ├── log.log     <small>*(logs)*</small>  
 ├── manage.py  
 ├── readme.md   <small>*(Project description document)*</small>  
-├── requirements.txt  <small>*(packages to be installed)*</small>  
+└── requirements.txt  <small>*(packages to be installed)*</small>  
 
 ### Data Structure (Corresponding to the tables)
-**PDFContent**:  
-    **title**T = models.CharField(max_length=100, unique=True)  
-    **url** = models.CharField(max_length=200, default='')  
-    **keyPhrase** = models.TextField(null=False)  
-    **num** = models.IntegerField(default=1)  
-           
-Mainly covers:  the information of scholar Pdf files  
-                title:     title of the scholar Pdf, the Unique identifier in the database;  
-                url:       url of the scholar Pdf;   
-                keyPhrase: the descriptions of each module;  
-                num:       how many times the paper has been searched  
+##### **Data Structure：**  
+**PDFContent**:  <small>*(the information of scholar Pdf files )*</small>  
+-    **title**T = models.CharField(max_length=100, unique=True)  <small>*( title of the scholar Pdf, the Unique identifier in the database)*</small>   
+-    **url** = models.CharField(max_length=200, default='')  <small>*(url of the scholar Pdf)*</small>  
+-    **keyPhrase** = models.TextField(null=False)  <small>*( the descriptions of each module)*</small>  
+-    **num** = models.IntegerField(default=1)  <small>*(how many times the paper has been searched  )*</small>  
 
-**TotalKeyPhrases**:  
-    **content** = models.CharField(max_length=200, unique=True)  
-    **frequency** = models.FloatField(default=0.0)  
-    **titles** = models.TextField(null=False)  
+
+**TotalKeyPhrases**:  <small>*(the keyPhrases in the entire digested collection)*</small>  
+-    **content** = models.CharField(max_length=200, unique=True)  <small>*(the content of keyPhrase, the Unique identifier in the database)*</small>  
+-    **frequency** = models.FloatField(default=0.0)  <small>*(the accumulated frequency of KeyPhrase)*</small>  
+-    **titles** = models.TextField(null=False)  <small>*(titles of PDF which has this keyPhrase)*</small>  
          
-Mainly covers:  the keyPhrases in the entire digested collection  
-                content:    the content of keyPhrase, the Unique identifier in the database;  
-                frequency:  the accumulated frequency of KeyPhrase;   
-                titles:     titles of PDF which has this keyPhrase;   
-  
-**Interfaces to DB:**  
- **class PDFContent**    
+
+##### ****Interfaces to DB:**  
+**class PDFContent**    
 
         `def getByFields(self, field, content)`  
         `def getHotPDFList(self, limit)`  
@@ -114,13 +106,14 @@ Install the required packages:
  `pip install -r requirements.txt`
  
 ### Create the DB
-Migrate it according to the Django :
+Migrate it according to the Django :  
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 ### Run
+Run the django project locally  
 ```
 python manage.py runserver 
 ```
@@ -133,8 +126,7 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 ```
 python manage.py runserver 
 ```
-**Unit test store at /app01/tests/**    
-        Details by reading `tests.py`  
+- **Unit test store at /app01/tests/**, Details by reading `tests.py`  
 
 ## System Framework  
 The links between pages of the system is shown blow
@@ -165,9 +157,9 @@ Show the details of pdf!
 
 #### Process
 
-##### Distribute 
+##### Distribute request of search 
 - Using`search(request)`to distribute request by request.method and search_type
-- Title must be in the DB, url must be directly access to the pdf
+- NOTE: Title must be in the DB, url must be directly access to the pdf
 ```python  
 def search(request):
     """
