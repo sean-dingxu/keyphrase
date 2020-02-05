@@ -1,16 +1,16 @@
 # KeyPhrase Visualization
 ### Description
-**For WING's task one**. 
-###Input :
+**For WING's task one**   
+###Input :  
 - URL for PDF
-####Requirements: 
+####Requirements:   
 - Fetch the PDF using the input URL
 - Identify the content and title of the PDF using OCR processor
 - Get keyPhrases of the content and store it with the title and URL locally
 - Visualize top keyphrases for the entire digested collection
 - Visualize keyphrases for a particular paper
 
-### File Structure
+### File Structure  
 keyphrase  
 ├── app01  
 │   ├── __init__.py  
@@ -79,39 +79,39 @@ keyphrase
     **keyPhrase** = models.TextField(null=False)  
     **num** = models.IntegerField(default=1)  
            
-Mainly covers: the information of scholar Pdf files  
-               title:     title of the scholar Pdf, the Unique identifier in the database;  
-               url:       url of the scholar Pdf;   
-               keyPhrase: the descriptions of each module;  
-               num:       how many times the paper has been searched  
+Mainly covers:  the information of scholar Pdf files  
+                title:     title of the scholar Pdf, the Unique identifier in the database;  
+                url:       url of the scholar Pdf;   
+                keyPhrase: the descriptions of each module;  
+                num:       how many times the paper has been searched  
 
 **TotalKeyPhrases**:  
     **content** = models.CharField(max_length=200, unique=True)  
     **frequency** = models.FloatField(default=0.0)  
     **titles** = models.TextField(null=False)  
          
-Mainly covers: the keyPhrases in the entire digested collection  
-               content:    the content of keyPhrase, the Unique identifier in the database;  
-               frequency:  the accumulated frequency of KeyPhrase;   
-               titles:     titles of PDF which has this keyPhrase;   
+Mainly covers:  the keyPhrases in the entire digested collection  
+                content:    the content of keyPhrase, the Unique identifier in the database;  
+                frequency:  the accumulated frequency of KeyPhrase;   
+                titles:     titles of PDF which has this keyPhrase;   
   
 **Interfaces to DB:**  
  **class PDFContent**    
 
-    `def getByFields(self, field, content)`  
-    `def getHotPDFList(self, limit)`  
+        `def getByFields(self, field, content)`  
+        `def getHotPDFList(self, limit)`  
     
   **class TotalKeyPhrases**    
-     
-    `def getAll(self)`  
-    `def getPDFListByKeyPhrase(self, keyPhrase)`  
-    `def updateNewPDF(self, keyPhrases, title)`  
-    `def getHotKeyPhraseList(self, limit)`  
+        
+        `def getAll(self)`  
+        `def getPDFListByKeyPhrase(self, keyPhrase)`  
+        `def updateNewPDF(self, keyPhrases, title)`  
+        `def getHotKeyPhraseList(self, limit)`  
     
 ## How to use
 ### Install using pip
 Install the required packages: 
- `pip install -Ur requirements.txt`
+ `pip install -r requirements.txt`
  
 ### Create the DB
 Migrate it according to the Django :
@@ -129,13 +129,12 @@ python manage.py runserver
 Visit http://127.0.0.1:8000/ to get started, or the port you config  
 
 
-
-### Unit test
+### Unit test  
 ```
 python manage.py runserver 
 ```
-**Unit test store at /app01/tests/**   
-Details by reading `tests.py`  
+**Unit test store at /app01/tests/**    
+        Details by reading `tests.py`  
 
 ## System Framework  
 The links between pages of the system is shown blow

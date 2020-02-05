@@ -1,7 +1,8 @@
 # Import libraries
+import logging
 import ssl
 import urllib
-import logging
+
 import pdf2image
 import pke
 import pytesseract
@@ -192,7 +193,7 @@ def getHotPDFList():
     get the top10 hot PDF in the db
     :return: [pdf]
     """
-    logger.debug('Get Hot'+ str(MAX_NUM)+' PDFList')
+    logger.debug('Get Hot' + str(MAX_NUM) + ' PDFList')
     pdfContent = PDFContent()
     return pdfContent.getHotPDFList(limit=MAX_NUM)
 
@@ -202,7 +203,7 @@ def getPDFListByKeyPhrase(keyPhrase):
     get pdf with certain keyPhrase
     :return: [pdf]
     """
-    logger.debug('Search PDF with keyPhrase' + keyPhrase )
+    logger.debug('Search PDF with keyPhrase' + keyPhrase)
     titles = TotalKeyPhrases().getPDFListByKeyPhrase(keyPhrase=keyPhrase)
     pdfList = []
     for i in titles:
@@ -219,5 +220,5 @@ def getHotKeyPhraseList():
     get the top10 hot PDF in the db
     :return: [KeyPhrase]
     """
-    logger.debug('Get Hot '+ str(MAX_NUM)+' KeyPhraseList')
+    logger.debug('Get Hot ' + str(MAX_NUM) + ' KeyPhraseList')
     return TotalKeyPhrases().getHotKeyPhraseList(limit=MAX_NUM)
