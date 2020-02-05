@@ -74,20 +74,20 @@ keyphrase
 
 ### Data Structure (Corresponding to the tables)
 ##### **Data Structure：**  
-**PDFContent**:  <small>*(the information of scholar Pdf files )*</small>  
--    **title**T = models.CharField(max_length=100, unique=True)  <small>*( title of the scholar Pdf, the Unique identifier in the database)*</small>   
--    **url** = models.CharField(max_length=200, default='')  <small>*(url of the scholar Pdf)*</small>  
--    **keyPhrase** = models.TextField(null=False)  <small>*( the descriptions of each module)*</small>  
--    **num** = models.IntegerField(default=1)  <small>*(how many times the paper has been searched  )*</small>  
+**PDFContent**:    <small>*(the information of scholar Pdf files )*</small>  
+-    **title**T = models.CharField(max_length=100, unique=True)    <small>*( title of the scholar Pdf, the Unique identifier in the database)*</small>   
+-    **url** = models.CharField(max_length=200, default='')    <small>*(url of the scholar Pdf)*</small>  
+-    **keyPhrase** = models.TextField(null=False)    <small>*( the descriptions of each module)*</small>  
+-    **num** = models.IntegerField(default=1)    <small>*(how many times the paper has been searched  )*</small>  
 
 
-**TotalKeyPhrases**:  <small>*(the keyPhrases in the entire digested collection)*</small>  
--    **content** = models.CharField(max_length=200, unique=True)  <small>*(the content of keyPhrase, the Unique identifier in the database)*</small>  
--    **frequency** = models.FloatField(default=0.0)  <small>*(the accumulated frequency of KeyPhrase)*</small>  
--    **titles** = models.TextField(null=False)  <small>*(titles of PDF which has this keyPhrase)*</small>  
+**TotalKeyPhrases**:    <small>*(the keyPhrases in the entire digested collection)*</small>  
+-    **content** = models.CharField(max_length=200, unique=True)    <small>*(the content of keyPhrase, the Unique identifier in the database)*</small>  
+-    **frequency** = models.FloatField(default=0.0)    <small>*(the accumulated frequency of KeyPhrase)*</small>  
+-    **titles** = models.TextField(null=False)    <small>*(titles of PDF which has this keyPhrase)*</small>  
          
 
-##### ****Interfaces to DB:**  
+##### **Interfaces to DB:**  
 **class PDFContent**    
 
         `def getByFields(self, field, content)`  
@@ -106,7 +106,7 @@ Install the required packages:
  `pip install -r requirements.txt`
  
 ### Create the DB
-Migrate it according to the Django :  
+Migrate sqlite3 DB according to the Django :  
 ```
 python manage.py makemigrations
 python manage.py migrate
@@ -123,10 +123,10 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 
 
 ### Unit test  
+Unit test store at **/app01/tests/**, Details by reading `tests.py`  
 ```
 python manage.py runserver 
 ```
-- **Unit test store at /app01/tests/**, Details by reading `tests.py`  
 
 ## System Framework  
 The links between pages of the system is shown blow
