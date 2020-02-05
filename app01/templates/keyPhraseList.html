@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+    body {
+        width: 100%;
+        height: 100%;
+        background-image: url('../static/image/bg.jpg');
+        background-size: cover;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    table td, table th {
+        border: 1px solid #cad9ea;
+        color: #666;
+        height: 30px;
+    }
+
+    table thead th {
+        background-color: #CCE8EB;
+        width: 100px;
+    }
+
+    table tr:nth-child(odd) {
+        background: #fff;
+    }
+
+    table tr:nth-child(even) {
+        background: #F5FAFA;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Top keyPhrases</title>
+</head>
+<body>
+<br>
+<table>
+    <caption>
+        <h2>{{header}}</h2>
+    </caption>
+
+    <br>
+    <thead>
+    <th>content</th>
+    <th>total frequency</th>
+    </thead>
+    {% for i in data %}
+    <tr>
+        <td><a href="/pdfListByKeyPhrase?keyPhrase={{ i.content }}">{{ i.content }}</a></td>
+        <td>{{ i.frequency }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<br><br>
+<div style="text-align:center">
+    <a href="/keyPhraseWordCloud/">
+        <button>Click to See the WordCloud of all the KeyPhrases</button>
+    </a>
+</div>
+<div style="text-align:center">
+    <a href="/homepage/">
+        <button>Click to Return</button>
+    </a>
+</div>
+</body>
+</html>

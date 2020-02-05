@@ -1,0 +1,80 @@
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- 上述meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/search.css' %}" rel="stylesheet"/>
+    <title>key-phrase-search</title>
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="col">
+        <form action="/search/" class="form-search" method="post">
+            {% csrf_token %}
+            <h2 class="text-center">Welcome to the key-phrase system</h2>
+            <br>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <input autofocus class="form-control" id="url_pdf" name='url_pdf'
+                       placeholder="Type the url or the title of pdf here：" required type="text">
+            </div>
+            <br>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+
+                       
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                                    <span aria-hidden="true">&times;</span>
+
+                           
+                </button>
+
+                        {{ message }}
+
+            </div>
+
+            {% endfor %}
+            <div style="text-align:center">
+                <input checked name="type" type="radio" value="URL">URL
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input name="type" type="radio" value="Title">Title
+            </div>
+            </span>
+            <br>
+            <br>
+            <br>
+
+            <div style="text-align:center">
+                <!--<a href="/register/" class="text-success "><ins>新用户注册</ins></a>-->
+                <button class="btn btn-primary" type="submit">search</button>
+
+            </div>
+
+        </form>
+    </div>
+</div> <!-- /container -->
+
+ <br><br>
+<div style="text-align:center">
+    <a href="/homepage/">
+        <button>Click to Return</button>
+    </a>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{# 以下三者的引用顺序是固定的#}
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

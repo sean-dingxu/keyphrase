@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    table td, table th {
+        border: 1px solid #cad9ea;
+        color: #666;
+        height: 30px;
+    }
+
+    table thead th {
+        background-color: #CCE8EB;
+        width: 100px;
+    }
+
+    table tr:nth-child(odd) {
+        background: #fff;
+    }
+
+    table tr:nth-child(even) {
+        background: #F5FAFA;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>showing articles</title>
+</head>
+<body>
+<br>
+<table>
+    <caption>
+        <h2>{{header}}</h2>
+    </caption>
+    <br>
+    <thead>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Hot</th>
+
+    </thead>
+    {% for i in data %}
+    <tr>
+        <td><a href="/search?title={{ i.title }}">{{ i.title }}</a></td>
+        <td><a href={{i.url}}>{{ i.url }}</a></td>
+        <td>{{ i.num }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+<br><br>
+<div style="text-align:center">
+    <a href="/homepage/">
+        <button>Click to Return</button>
+    </a>
+</div>
+</body>
+</html>

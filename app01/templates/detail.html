@@ -1,0 +1,49 @@
+<!-- myfirstvis/templates/pyecharts.html -->
+<!DOCTYPE html>
+{% load static %}
+<html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- 上述meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/detail.css' %}" rel="stylesheet"/>
+    <title>Detail of {{title}}</title>
+
+    {% for jsfile_name in script_list %}
+    <script src="{{host}}/{{jsfile_name}}.js"></script>
+    {% endfor %}
+
+</head>
+
+<body>
+<br>
+
+<div class="container">
+    <br>
+    <h3 class="text-center">{{title}}</h3>
+    <HR align=center width=500 color=#000 SIZE=7>
+    <p style="text-align: center"><a align=center href={{url}}>{{url}} </a></p>
+
+    <HR align=center width=500 color=#000 SIZE=7>
+
+    <div align=center>
+        {{wordCloud|safe}}
+        <p>wordCloud of keyPhrases, move the cursor to see the frequency </p>
+    </div>
+
+
+    <div style="text-align:center">
+        <a href="/homepage/">
+            <button>Click to Return</button>
+        </a>
+    </div>
+</div>
+</body>
+
+</html>
+
+
