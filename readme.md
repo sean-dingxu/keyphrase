@@ -1,7 +1,7 @@
 # KeyPhrase Visualization
 ### Description
 **For WING's task one**   
-### Input :  
+#### Input :  
 - URL for PDF
 #### Requirements:   
 - Fetch the PDF using the input URL
@@ -72,8 +72,7 @@ keyphrase
 ├── readme.md   <small>*(Project description document)*</small>  
 └── requirements.txt  <small>*(packages to be installed)*</small>  
 
-### Data Structure (Corresponding to the tables)
-##### **Data Structure：**  
+### **Data Structure：**  (Corresponding to the tables)
 **PDFContent**:    <small>*(the information of scholar Pdf files )*</small>  
 -    **title**T = models.CharField(max_length=100, unique=True)    <small>*( title of the scholar Pdf, the Unique identifier in the database)*</small>   
 -    **url** = models.CharField(max_length=200, default='')    <small>*(url of the scholar Pdf)*</small>  
@@ -87,7 +86,7 @@ keyphrase
 -    **titles** = models.TextField(null=False)    <small>*(titles of PDF which has this keyPhrase)*</small>  
          
 
-##### **Interfaces to DB:**  
+### **Interfaces to DB:**  
 **class PDFContent**    
 
         `def getByFields(self, field, content)`  
@@ -112,13 +111,13 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Run
+### Start the server
 Run the django project locally  
 ```
 python manage.py runserver 
 ```
 
-### Use
+### Use the system on your browser
 Visit http://127.0.0.1:8000/ to get started, or the port you config  
 
 
@@ -129,26 +128,32 @@ python manage.py runserver
 ```
 
 ## System Framework  
-The links between pages of the system is shown blow
+The links between pages of the system is shown blow  
+  
 ![](docs/framework.png)
 
 ## Pages
 ### Index page
-Click to choose the operation you want!
+Click to choose the operation you want!  
+  
 ![](docs/index.jpg)
 ### Search page
-Type the content in the box, choose to search by title or url, if by title, only papers been searched before will do!
+Type the content in the box, choose to search by title or url, if by title, only papers been searched before will do!  
+  
 ![](docs/search.jpg)
 ### KeyPhraseList page
-Show keyPhrases with the biggest frequency, and click to see related papers or the wordCloud of all the keyPhrases!
+Show keyPhrases with the biggest frequency, and click to see related papers or the wordCloud of all the keyPhrases!  
+  
 ![](docs/keyPhraseList.jpg)
 
 ### PdfList page
-Show the Pdfs which are hot or related to a certain keyPhrase, and click to see the detail of the pdf!
+Show the Pdfs which are hot or related to a certain keyPhrase, and click to see the detail of the pdf!  
+  
 ![](docs/pdfList.jpg)
 
 ### Detail.page
-Show the details of pdf!
+Show the details of pdf!  
+  
 ![](docs/detail.jpg)
 ## Modules
 ### Search module
