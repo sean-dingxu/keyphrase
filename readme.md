@@ -258,7 +258,7 @@ def search(request):
 - Get PdfList of the keyPhrase
 - Displaying the wordCloud of all the keyPhrases
 #### Process
-- Use `getHotKeyPhraseList()` to get the hot KeyPhrase --> `keyPhrase.html`
+- Use `getHotKeyPhraseList()` to get the hot KeyPhrase --> `keyPhraseList.html`
 - Use the code
 ```html 
     <td><a href="/pdfListByKeyPhrase?keyPhrase={{ i.content }}">{{ i.content }}</a></td>
