@@ -214,8 +214,28 @@ def search(request):
         text = text + str(pytesseract.image_to_string(page))
 ```
 - Use `processContent(text)` to get the title, assume the title is on the top
-- Use model TopicRank `pke.unsupervised.TopicRank() ` to generate keyPhrases with frequency
 
+
+- Use model TopicRank `pke.unsupervised.TopicRank() ` to generate keyPhrases with frequency
+```python       
+    # initialize keyphrase extraction model, here TopicRank
+    extractor = pke.unsupervised.TopicRank()
+
+    # load the content of the document, here document is expected to be in raw
+    # format (i.e. a simple text file) and preprocessing is carried out using spacy
+    extractor.load_document(input=text, language='en')
+
+    # keyphrase candidate selection, in the case of TopicRank: sequences of nouns
+    # and adjectives (i.e. `(Noun|Adj)*`)
+    extractor.candidate_selection()
+
+    # candidate weighting, in the case of TopicRank: using a random walk algorithm
+    extractor.candidate_weighting()
+
+    # N-best selection, keyphrases contains the 50 highest scored candidates as
+    # (keyphrase, score) tuples
+    keyPhrases = extractor.get_n_best(n=KEY_PHRASE_NUM)
+```
 ##### KeyPhrases visualization
 - Use `generateWoldCloud(keyPhrases)` to visualize KeyPhrases of the pdf
 
@@ -230,7 +250,7 @@ def search(request):
 ```html 
     <td><a href="/search?title={{ i.title }}">{{ i.title }}</a></td>
 ```
-to invoke `search(request)` to view the detail of papers, and the method will be GET --> `detail.html`
+    to invoke `search(request)` to view the detail of papers, and the method will be GET --> `detail.html`
 
 ### KeyPhraseList module
 #### Overall
@@ -243,12 +263,12 @@ to invoke `search(request)` to view the detail of papers, and the method will be
 ```html 
     <td><a href="/pdfListByKeyPhrase?keyPhrase={{ i.content }}">{{ i.content }}</a></td>
 ```
-to invoke `pdfListByKeyPhrase(request)` to view the PdfList of the keyPhrase --> `pdfList.html`
+    to invoke `pdfListByKeyPhrase(request)` to view the PdfList of the keyPhrase --> `pdfList.html`
 - Use  the code
 ```html 
     <a href="/keyPhraseWordCloud/">
         <button>Click to See the WordCloud of all the KeyPhrases</button>
     </a>
 ```
-   to invoke `keyPhraseWordCloud(request)` to visualize all the keyPhrases --> `detail.html`
+    to invoke `keyPhraseWordCloud(request)` to visualize all the keyPhrases --> `detail.html`
 ![](docs/wordCloudOfAll.jpg)
