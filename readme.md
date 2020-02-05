@@ -249,8 +249,8 @@ def search(request):
 - Use the code
 ```html 
     <td><a href="/search?title={{ i.title }}">{{ i.title }}</a></td>
-```
-    to invoke `search(request)` to view the detail of papers, and the method will be GET --> `detail.html`
+```  
+  to invoke `search(request)` to view the detail of papers, and the method will be GET --> `detail.html`
 
 ### KeyPhraseList module
 #### Overall
@@ -263,12 +263,12 @@ def search(request):
 ```html 
     <td><a href="/pdfListByKeyPhrase?keyPhrase={{ i.content }}">{{ i.content }}</a></td>
 ```
-    to invoke `pdfListByKeyPhrase(request)` to view the PdfList of the keyPhrase --> `pdfList.html`
+  to invoke `pdfListByKeyPhrase(request)` to view the PdfList of the keyPhrase --> `pdfList.html`
 - Use  the code
 ```html 
     <a href="/keyPhraseWordCloud/">
         <button>Click to See the WordCloud of all the KeyPhrases</button>
     </a>
 ```
-    to invoke `keyPhraseWordCloud(request)` to visualize all the keyPhrases --> `detail.html`
+  to invoke `keyPhraseWordCloud(request)` to visualize all the keyPhrases --> `detail.html`
 ![](docs/wordCloudOfAll.jpg)
