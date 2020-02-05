@@ -4,105 +4,104 @@
 ###Input :
 - URL for PDF
 ####Requirements: 
-- 1)Fetch the PDF using the input URL
-- 2)Identify the content and title of the PDF using OCR processor
-- 3)Get keyPhrases of the content and store it with the title and URL locally
-- 4)Visualize top keyphrases for the entire digested collection
-- 5)Visualize keyphrases for a particular paper
+- Fetch the PDF using the input URL
+- Identify the content and title of the PDF using OCR processor
+- Get keyPhrases of the content and store it with the title and URL locally
+- Visualize top keyphrases for the entire digested collection
+- Visualize keyphrases for a particular paper
 
 ### File Structure
-keyphrase
-├── app01
-│   ├── __init__.py
-│   │   ├── __init__.cpython-37.pyc
-│   │   ├── admin.cpython-37.pyc
-│   │   ├── models.cpython-37.pyc
-│   │   ├── views.cpython-37.pyc
-│   │   └── worker.cpython-37.pyc
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations  <small>*(Migration for DataBase )*</small>
-│   │   ├── 0001_initial.py
-│   │   ├── __init__.py
-│   │       ├── 0001_initial.cpython-37.pyc
-│   │       └── __init__.cpython-37.pyc
-│   ├── models.py
-│   ├── static  <small>*(css and image file to be load into html)*</small>
-│   │   ├── css
-│   │   │   ├── detail.css
-│   │   │   ├── index.css
-│   │   │   └── search.css
-│   │   └── image
-│   │       └── bg.jpg
-│   ├── templates   <small>*(html templates)*</small>
-│   │   ├── detail.html
-│   │   ├── index.html
-│   │   ├── keyPhraseList.html
-│   │   ├── pdfList.html
-│   │   └── searchPage.html
-│   ├── tests    <small>*(uni-test)*</small>
-│   │   ├── __init__.py
-│   │   │   ├── __init__.cpython-37.pyc
-│   │   │   └── tests.cpython-37.pyc
-│   │   └── tests.py
-│   ├── views.py    <small>*(receive the request and return views)*</small>
-│   └── worker.py   <small>*(core code of operation)*</small>
-├── db.sqlite3
-├── docs    <small>*(docs)*</small>
-│   ├── detail.jpg
-│   ├── flowchartOfSearch.png
-│   ├── framework.png
-│   ├── index.jpg
-│   ├── keyPhraseList.jpg
-│   ├── pdfList.jpg
-│   ├── search.jpg
-│   └── wordCloudOfAll.jpg
-├── keyphrase
-│   ├── __init__.py
-│   │   ├── __init__.cpython-37.pyc
-│   │   ├── settings.cpython-37.pyc
-│   │   ├── urls.cpython-37.pyc
-│   │   └── wsgi.cpython-37.pyc
-│   ├── asgi.py
-│   ├── settings.py  <small>*(config document)*</small>
-│   ├── urls.py     <small>*(routes URLs to views)*</small>
-│   └── wsgi.py
-├── log.log     <small>*(logs)*</small>
-├── manage.py
-├── readme.md   <small>*(Project description document)*</small>
-├── requirements.txt  <small>*(packages to be installed)*</small>
+keyphrase  
+├── app01  
+│   ├── __init__.py  
+│   │   ├── __init__.cpython-37.pyc  
+│   │   ├── admin.cpython-37.pyc  
+│   │   ├── models.cpython-37.pyc  
+│   │   ├── views.cpython-37.pyc  
+│   │   └── worker.cpython-37.pyc  
+│   ├── admin.py  
+│   ├── apps.py  
+│   ├── migrations  <small>*(Migration for DataBase )*</small>  
+│   │   ├── 0001_initial.py  
+│   │   ├── __init__.py  
+│   │       ├── 0001_initial.cpython-37.pyc  
+│   │       └── __init__.cpython-37.pyc  
+│   ├── models.py  
+│   ├── static  <small>*(css and image file to be load into html)*</small>  
+│   │   ├── css  
+│   │   │   ├── detail.css  
+│   │   │   ├── index.css  
+│   │   │   └── search.css  
+│   │   └── image  
+│   │       └── bg.jpg  
+│   ├── templates   <small>*(html templates)*</small>  
+│   │   ├── detail.html  
+│   │   ├── index.html  
+│   │   ├── keyPhraseList.html  
+│   │   ├── pdfList.html  
+│   │   └── searchPage.html  
+│   ├── tests    <small>*(uni-test)*</small>  
+│   │   ├── __init__.py  
+│   │   │   ├── __init__.cpython-37.pyc  
+│   │   │   └── tests.cpython-37.pyc  
+│   │   └── tests.py  
+│   ├── views.py    <small>*(receive the request and return views)*</small>  
+│   └── worker.py   <small>*(core code of operation)*</small>  
+├── db.sqlite3  
+├── docs    <small>*(docs)*</small>  
+│   ├── detail.jpg  
+│   ├── flowchartOfSearch.png  
+│   ├── framework.png  
+│   ├── index.jpg  
+│   ├── keyPhraseList.jpg  
+│   ├── pdfList.jpg  
+│   ├── search.jpg  
+│   └── wordCloudOfAll.jpg  
+├── keyphrase  
+│   ├── __init__.py  
+│   │   ├── __init__.cpython-37.pyc  
+│   │   ├── settings.cpython-37.pyc  
+│   │   ├── urls.cpython-37.pyc  
+│   │   └── wsgi.cpython-37.pyc  
+│   ├── asgi.py  
+│   ├── settings.py  <small>*(config document)*</small>  
+│   ├── urls.py     <small>*(routes URLs to views)*</small>  
+│   └── wsgi.py  
+├── log.log     <small>*(logs)*</small>  
+├── manage.py  
+├── readme.md   <small>*(Project description document)*</small>  
+├── requirements.txt  <small>*(packages to be installed)*</small>  
 
 ### Data Structure (Corresponding to the tables)
-**PDFContent**:
-    **title**T = models.CharField(max_length=100, unique=True)
-    **url** = models.CharField(max_length=200, default='')
-    **keyPhrase** = models.TextField(null=False)
-    **num** = models.IntegerField(default=1)
-         
-Mainly covers: the information of scholar Pdf files
-               title:     title of the scholar Pdf, the Unique identifier in the database;
-               url:       url of the scholar Pdf; 
-               keyPhrase: the descriptions of each module; 
-               num:       how many times the paper has been searched
+**PDFContent**:  
+    **title**T = models.CharField(max_length=100, unique=True)  
+    **url** = models.CharField(max_length=200, default='')  
+    **keyPhrase** = models.TextField(null=False)  
+    **num** = models.IntegerField(default=1)  
+           
+Mainly covers: the information of scholar Pdf files  
+               title:     title of the scholar Pdf, the Unique identifier in the database;  
+               url:       url of the scholar Pdf;   
+               keyPhrase: the descriptions of each module;  
+               num:       how many times the paper has been searched  
 
-**TotalKeyPhrases**:
-    # the content of keyPhrase
-    **content** = models.CharField(max_length=200, unique=True)
-    **frequency** = models.FloatField(default=0.0)
-    **titles** = models.TextField(null=False)
+**TotalKeyPhrases**:  
+    **content** = models.CharField(max_length=200, unique=True)  
+    **frequency** = models.FloatField(default=0.0)  
+    **titles** = models.TextField(null=False)  
          
-Mainly covers: the keyPhrases in the entire digested collection
-               content:    the content of keyPhrase, the Unique identifier in the database;
-               frequency:  the accumulated frequency of KeyPhrase; 
-               titles:     titles of PDF which has this keyPhrase; 
-
-**Interfaces to DB:**
- **class PDFContent**  
+Mainly covers: the keyPhrases in the entire digested collection  
+               content:    the content of keyPhrase, the Unique identifier in the database;  
+               frequency:  the accumulated frequency of KeyPhrase;   
+               titles:     titles of PDF which has this keyPhrase;   
+  
+**Interfaces to DB:**  
+ **class PDFContent**    
 
     `def getByFields(self, field, content)`  
     `def getHotPDFList(self, limit)`  
     
-  **class TotalKeyPhrases**  
+  **class TotalKeyPhrases**    
      
     `def getAll(self)`  
     `def getPDFListByKeyPhrase(self, keyPhrase)`  
@@ -127,7 +126,7 @@ python manage.py runserver
 ```
 
 ### Use
-Visit http://127.0.0.1:8000/ to get started, or the port you config
+Visit http://127.0.0.1:8000/ to get started, or the port you config  
 
 
 
@@ -136,9 +135,9 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 python manage.py runserver 
 ```
 **Unit test store at /app01/tests/**   
-Details by reading `tests.py`
+Details by reading `tests.py`  
 
-## System Framework
+## System Framework  
 The links between pages of the system is shown blow
 ![](docs/framework.png)
 
