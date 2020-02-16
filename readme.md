@@ -1,14 +1,29 @@
 # KeyPhrase Visualization
 ### Description
 **For WING's task one**   
+The system is designed to generate and display keyPhrase of papers.And the system can also record the history 
+of these keyPhrases, then users can have a globe view of the hot topics and 
+papers.   
+The system is developed based on the django framework, which is quite
+useful to construct a web project.  Users can get access to the system by browser.   
+To deal with a request, generally, the system will firstly download the pdf file, and   
+identify the content and title of the PDF with `pytesseract`. Then keyPhrases   
+will be generated using TopicRank algorithm and be stored with its title and URL.
+Finally, the system uses wordCloud to display the result for users.
 #### Input :  
 - URL for PDF
 #### Requirements:   
 - Fetch the PDF using the input URL
 - Identify the content and title of the PDF using OCR processor
-- Get keyPhrases of the content and store it with the title and URL locally
+- Get keyPhrases of the content 
+- store it with the title and URL locally
 - Visualize top keyPhrases for the entire digested collection
 - Visualize keyPhrases for a particular paper
+
+### Important Libraries  
+`pytesseract`: a wrapper for Google's esseract-OCR Engine to identify the PDF  
+`pke`: an open source python-based keyPhrase extraction toolkit with pre-trained models  
+`pyecharts`: a Python E-charts Plotting Library to draw wordCloud to display keyPhrases
 
 ### File Structure  
 keyphrase  
@@ -125,8 +140,9 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 Unit test store at **/app01/tests/**, Details by reading `tests.py`
 Run unit test on the django
 ```
-python manage.py runserver 
+python manage.py test 
 ```
+
 
 ## System Framework  
 The links between pages of the system is shown blow  
