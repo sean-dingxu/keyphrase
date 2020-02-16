@@ -1,3 +1,9 @@
+"""
+functions to deal with the requests from users
+if the system is required to show keyPhrases, according to the request type, will return the result
+"""
+
+
 # Import libraries
 import logging
 import ssl

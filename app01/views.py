@@ -1,3 +1,9 @@
+"""
+
+    according to the urls.py, django will use the functions below to handle requests
+
+"""
+
 import logging
 
 from django.contrib import messages

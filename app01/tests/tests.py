@@ -1,5 +1,9 @@
 # Create your tests here.
+"""
 
+    used for unit test of the project, based on the django framework
+
+"""
 from django.test import TestCase
 
 from app01.models import PDFContent, TotalKeyPhrases
@@ -42,7 +46,7 @@ class ViewTestsSearch(TestCase):
         createPDFContent()
         url = 'https://www.aclweb.org/anthology/P14-5010.pdf'
         response = self.client.post('/search/', {'type': 'URL', 'url_pdf': url})
-        self.assertEqual(PDFContent.objects.get(url=url).num, 3)
+        self.assertEqual(PDFContent.objects.get(url=url).num, 2)
         self.assertContains(response.content, url)
 
     def test_search_by_title(self):

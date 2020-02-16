@@ -1,4 +1,12 @@
 # Create your models here.
+"""
+    Create your models here.
+    the models corresponding to the db
+    including:
+        fields
+        functions to handle db
+"""
+
 from django.db import models
 
 
