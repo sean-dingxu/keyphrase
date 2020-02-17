@@ -142,7 +142,7 @@ Details by reading `tests.py`  : the cases and the results
 consist of three parts:  
 - view test: whether the urls can link to correct views
 -  model test: whether the functions handling database works correctly
--  function test: whether the core functions works correctly
+-  function test: whether the core functions works correctly  
 Run unit test on the django
 ```
 python manage.py test 
