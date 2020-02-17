@@ -137,13 +137,17 @@ Visit http://127.0.0.1:8000/ to get started, or the port you config
 
 
 ### Unit test  
-Unit test store at **/app01/tests/**, Details by reading `tests.py`
+Unit test store at **/app01/tests/**, the django framework provides tools for test.  
+Details by reading `tests.py`  : the cases and the results  
+consist of three parts:  
+- view test: whether the urls can link to correct views
+-  model test: whether the functions handling database works correctly
+-  function test: whether the core functions works correctly
 Run unit test on the django
 ```
 python manage.py test 
 ```
-
-
+Check the result to see whether there is any errors on console
 ## System Framework  
 The links between pages of the system is shown blow  
   
